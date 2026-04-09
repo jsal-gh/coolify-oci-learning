@@ -109,3 +109,26 @@ Because all infrastructure is defined in Terraform and bootstrapped with cloud�
 - No manual reconfiguration is required
 - Coolify installs automatically
 - The environment is fully reproducible
+
+---
+
+## 🏷️ Resource Tagging and Cost Visibility
+
+All resources created by this stack are intended to share a common tagging strategy.
+
+Recommended tags:
+
+| Key | Value |
+|----|------|
+| Environment | learning |
+| Project | coolify |
+| Owner | <your-name> |
+| ManagedBy | terraform |
+| Purpose | learning |
+
+### Benefits
+- Easier cost analysis
+- Cleaner resource inventory
+- Better habits for production environments
+
+Tagging can be enforced later directly in Terraform once the learning objectives are met.
