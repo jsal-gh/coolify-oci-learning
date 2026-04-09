@@ -76,3 +76,36 @@ This repository is intended for:
 - Clean rebuild and teardown
 
 It is intentionally *not* over-engineered.
+
+---
+
+## 🔄 Destroying and Rebuilding the Environment
+
+This environment is intentionally designed to be **disposable**.
+
+### Destroying via OCI Resource Manager
+
+1. OCI Console → **Developer Services → Resource Manager**
+2. Open the stack created from this repository
+3. Click **Destroy**
+4. Confirm the destruction
+
+This will remove:
+- Compute instances
+- Block volumes
+- Networking resources
+
+---
+
+### Rebuilding
+
+To rebuild from scratch:
+
+1. Open the same stack
+2. Click **Apply**
+3. Wait for deployment to complete
+
+Because all infrastructure is defined in Terraform and bootstrapped with cloud‑init:
+- No manual reconfiguration is required
+- Coolify installs automatically
+- The environment is fully reproducible
