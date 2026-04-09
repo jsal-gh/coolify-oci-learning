@@ -132,3 +132,31 @@ Recommended tags:
 - Better habits for production environments
 
 Tagging can be enforced later directly in Terraform once the learning objectives are met.
+
+---
+
+## 📈 Scaling Out with Additional Workers
+
+This environment starts with a single worker node but is designed to scale horizontally.
+
+### When to Add Workers
+- CPU or memory pressure on the existing worker
+- Separate workloads with different lifecycle requirements
+- Learning horizontal scaling concepts
+
+---
+
+### How Scaling Works
+
+1. Provision a new compute instance:
+   - VM.Standard.A1.Flex or larger
+   - Docker installed via cloud-init
+2. Attach the same worker Network Security Group
+3. Register the worker in the Coolify UI
+
+Coolify automatically:
+- Schedules workloads
+- Routes traffic via Traefik
+- Applies TLS certificates
+
+No changes to ingress, DNS, or networking are required.
