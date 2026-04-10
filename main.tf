@@ -93,7 +93,7 @@ resource "oci_core_network_security_group_security_rule" "control_coolify_ui" {
     }
   }
 }
-``
+
 
 resource "oci_core_network_security_group" "worker_nsg" {
   compartment_id = var.compartment_id
