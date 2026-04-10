@@ -80,6 +80,21 @@ resource "oci_core_network_security_group_security_rule" "control_https" {
 }
 
 
+resource "oci_core_network_security_group_security_rule" "control_coolify_ui" {
+  network_security_group_id = oci_core_network_security_group.control_nsg.id
+  direction = "INGRESS"
+  protocol  = "6" # TCP
+  source    = "0.0.0.0/0"
+
+  tcp_options {
+    destination_port_range {
+      min = 8000
+      max = 8000
+    }
+  }
+}
+``
+
 resource "oci_core_network_security_group" "worker_nsg" {
   compartment_id = var.compartment_id
   vcn_id         = oci_core_virtual_network.vcn.id
