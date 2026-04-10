@@ -64,6 +64,7 @@ resource "oci_core_network_security_group" "control_nsg" {
   display_name   = "coolify-control-nsg"
 }
 
+
 resource "oci_core_network_security_group_security_rule" "control_https" {
   network_security_group_id = oci_core_network_security_group.control_nsg.id
   direction = "INGRESS"
@@ -71,9 +72,13 @@ resource "oci_core_network_security_group_security_rule" "control_https" {
   source    = "0.0.0.0/0"
 
   tcp_options {
-    destination_port_range { min = 443 max = 443 }
+    destination_port_range {
+      min = 443
+      max = 443
+    }
   }
 }
+
 
 resource "oci_core_network_security_group" "worker_nsg" {
   compartment_id = var.compartment_id
