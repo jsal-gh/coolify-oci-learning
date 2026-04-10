@@ -1,6 +1,10 @@
 #cloud-config
 package_update: true
 packages:
-  - docker
+  - oraclelinux-developer-release-el9
+
 runcmd:
+  - dnf config-manager --enable ol9_addons
+  - dnf install -y docker-engine
   - systemctl enable --now docker
+  - curl -fsSL https://get.coolify.io | bash
