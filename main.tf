@@ -15,10 +15,10 @@ data "oci_identity_availability_domains" "ads" {
   compartment_id = var.compartment_id
 }
 
-data "oci_core_images" "ol9" {
-  compartment_id           = var.compartment_id
-  operating_system         = "Oracle Linux"
-  operating_system_version = "9"
+data "oci_core_images" "ubuntu" {
+  compartment_id = var.compartment_id
+  operating_system = "Canonical Ubuntu"
+  operating_system_version = "22.04"
 }
 
 # --------------------
@@ -124,7 +124,7 @@ resource "oci_core_instance" "control" {
 
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.ol9.images[0].id
+    source_id = data.oci_core_images.ubuntu.images[0].id
   }
 
   metadata = {
@@ -156,7 +156,7 @@ resource "oci_core_instance" "worker" {
 
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.ol9.images[0].id
+    source_id = data.oci_core_images.ubuntu.images[0].id
   }
 
   metadata = {
