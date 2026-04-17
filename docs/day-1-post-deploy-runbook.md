@@ -1,24 +1,14 @@
-# Day‑1 Post‑Deploy Runbook
+# Day‑1 Post‑Deploy Runbook  
 **Coolify on OCI**
 
 ## Purpose
-This runbook documents the operational steps required after Terraform has completed successfully.
+Operational steps after Terraform is complete.
 
----
-
-## Preconditions
-- Terraform apply completed
-- Control and worker nodes running
-- OCI console access available
-
----
-
-## 1. Baseline Verification
-
-```bash
-hostname
-uptime
-docker version
-docker compose version
-docker run hello-world
-``
+## Steps
+1. Verify Docker
+2. Install Coolify
+3. Configure HTTPS
+4. Establish SSH trust
+5. Register worker
+6. Configure email
+7. Harden ports
