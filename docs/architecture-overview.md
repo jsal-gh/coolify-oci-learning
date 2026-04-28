@@ -22,17 +22,19 @@ This document describes the high‑level architecture of a self‑hosted applica
 
 ```mermaid
 flowchart TB
-    Internet -->|HTTPS 443| Traefik
-    Traefik --> CoolifyControl
-    CoolifyControl -->|SSH 22| Worker
+    Internet["Internet"]
+    Traefik["Traefik<br/>(TLS, WebSockets)"]
+    Control["Coolify Control Node<br/>(UI, API, Realtime)"]
+    Worker["Worker Node<br/>(Application Containers)"]
 
-    subgraph OCI
-        Traefik[Traefik
-(TLS, WebSockets)]
-        CoolifyControl[Coolify Control Node
-(UI, API, Realtime)]
-        Worker[Worker Node
-(Application Containers)]
+    Internet -->|HTTPS 443| Traefik
+    Traefik --> Control
+    Control -->|SSH 22| Worker
+
+    subgraph OCI ["Oracle Cloud Infrastructure"]
+        Traefik
+        Control
+        Worker
     end
 ```
 
